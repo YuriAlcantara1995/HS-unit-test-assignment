@@ -13,11 +13,13 @@ describe('FetchOnMounted.vue', () => {
   });
 
   it('renders correctly', () => {
+    fetchSpy.mockImplementation();
     const wrapper = mount(FetchOnMounted);
     expect(wrapper.exists()).toBe(true);
   });
 
   it('calls yesno API on mounted', () => {
+    fetchSpy.mockImplementation();
     mount(FetchOnMounted);
     expect(fetchSpy).toBeCalledTimes(1);
     expect(fetchSpy).toBeCalledWith('https://yesno.wtf/api');
@@ -66,4 +68,5 @@ describe('FetchOnMounted.vue', () => {
     await flushPromises();
     expect(wrapper.text()).toContain('error');
   });
+  
 });
